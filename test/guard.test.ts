@@ -163,6 +163,18 @@ describe("ElizaOS plugin", () => {
     expect(broadcast).toEqual([]);
   });
 
+  it("holds, and does not throw, when the model call fails", async () => {
+    const { send, check, broadcast } = actions();
+    const failing = { composeState: async () => ({ values: {}, data: {}, text: "" }),
+                      useModel: async () => { throw new Error("model down"); } } as any;
+    const sent: any = await send.handler(failing, msg(`Pay 20 USDC to ${PAYEE}`), state);
+    const checked: any = await check.handler(failing, msg(`Pay 20 USDC to ${PAYEE}`), state);
+    expect(sent.success).toBe(false);
+    expect(checked.text).toMatch(/^HELD/);
+    expect(checked.data.verdict.flags).toEqual(["CHECK_FAILED"]);
+    expect(broadcast).toEqual([]);
+  });
+
   it("the check action reports without sending", async () => {
     const { check, broadcast } = actions({ maxAmount: 100 });
     const out: any = await check.handler(runtime(xml(PAYEE, "500")), msg(`Is it safe to pay 500 USDC to ${PAYEE}?`), state);

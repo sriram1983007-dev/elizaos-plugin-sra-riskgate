@@ -10,6 +10,9 @@ and any agent that signs with [viem](https://viem.sh): check a USDC payment **be
 npm install elizaos-plugin-sra-riskgate viem
 ```
 
+The wallet guard and `checkPayment` need only viem. The ElizaOS plugin also uses `@elizaos/core`, which every
+ElizaOS project already has.
+
 ## Guard the wallet (works with or without ElizaOS)
 
 ```ts

@@ -21,6 +21,27 @@ jobs:
       - run: npm run build
       - run: npm test
 
+  without-elizaos:
+    name: installs and runs without ElizaOS
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm ci && npm pack
+      - name: checkPayment and guardWalletClient work with only viem installed
+        run: |
+          mkdir /tmp/app && cd /tmp/app && npm init -y >/dev/null
+          npm install "$GITHUB_WORKSPACE"/elizaos-plugin-sra-riskgate-*.tgz viem
+          test ! -e node_modules/@elizaos/core
+          node --input-type=module -e '
+          import { checkPayment, guardWalletClient } from "elizaos-plugin-sra-riskgate";
+          const A = "0x" + "a".repeat(40), B = "0x" + "b".repeat(40);
+          const v = checkPayment({ chainId: 8453, sender: A, recipient: B, amount: 20, pegDeviationPct: 0.1 });
+          if (v.decision !== "approve" || typeof guardWalletClient !== "function") process.exit(1);
+          console.log("ok", v.decision);'
+
   parity:
     name: vectors match the Python SDK
     runs-on: ubuntu-latest
