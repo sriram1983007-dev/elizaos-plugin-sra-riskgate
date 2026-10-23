@@ -4,7 +4,6 @@
  * untrusted: text in it that vouches for the payment ("pre-approved", "verified offline") holds it.
  */
 import type { Action, ActionResult, HandlerCallback, IAgentRuntime, Memory, Plugin, State } from "@elizaos/core";
-import { ModelType, composePromptFromState, parseKeyValueXml } from "@elizaos/core";
 import { checkPayment, USDC_ADDRESSES, USDC_DECIMALS, type Policy, type Verdict } from "./checks.js";
 import { guardWalletClient, RiskGateBlockedError, type GuardOptions } from "./guard.js";
 
@@ -32,6 +31,8 @@ const ERC20_TRANSFER_ABI = [{
 interface Extracted { recipient: string; amount: number }
 
 async function extractPayment(runtime: IAgentRuntime, message: Memory, state?: State): Promise<Extracted | string> {
+  // Loaded here, not at the top, so checkPayment and guardWalletClient work without ElizaOS installed.
+  const { ModelType, composePromptFromState, parseKeyValueXml } = await import("@elizaos/core");
   const s = state ?? (await runtime.composeState(message, ["RECENT_MESSAGES"], true));
   const prompt = composePromptFromState({ state: s, template: EXTRACT_TEMPLATE });
   const xml = await runtime.useModel(ModelType.TEXT_SMALL, { prompt });
@@ -68,7 +69,12 @@ export function createRiskGatePlugin(config: RiskGatePluginConfig): Plugin {
   const sender: string = typeof walletClient.account === "string" ? walletClient.account : walletClient.account.address;
 
   const evaluate = async (runtime: IAgentRuntime, message: Memory, state?: State) => {
-    const p = await extractPayment(runtime, message, state);
+    let p: Extracted | string;
+    try {
+      p = await extractPayment(runtime, message, state);
+    } catch (e) {
+      p = `the request could not be read (${(e as Error)?.message ?? String(e)})`;
+    }
     if (typeof p === "string") {
       const v: Verdict = { decision: "hold", riskScore: 0.65, flags: ["CHECK_FAILED"], explanation: `The payment is held: ${p}.`, requiredActions: ["manual_review"] };
       return { p: null, v };

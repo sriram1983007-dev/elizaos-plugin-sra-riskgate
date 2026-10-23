@@ -1,6 +1,6 @@
 {
   "name": "elizaos-plugin-sra-riskgate",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "SRA-RiskGate for ElizaOS: check stablecoin payments before an agent's wallet broadcasts them",
   "type": "module",
   "main": "dist/index.js",
@@ -20,7 +20,8 @@
   "scripts": {
     "build": "node scripts/gen_sanctions.mjs && tsc -p tsconfig.json",
     "test": "vitest run",
-    "prepublishOnly": "npm run build && npm test",
+    "prepack": "npm run build",
+    "prepublishOnly": "npm test",
     "parity": "python scripts/make_vectors.py test/vectors.json"
   },
   "keywords": [
