@@ -20,7 +20,8 @@
   "scripts": {
     "build": "node scripts/gen_sanctions.mjs && tsc -p tsconfig.json",
     "test": "vitest run",
-    "prepublishOnly": "npm run build && npm test",
+    "prepack": "npm run build",
+    "prepublishOnly": "npm test",
     "parity": "python scripts/make_vectors.py test/vectors.json"
   },
   "keywords": [

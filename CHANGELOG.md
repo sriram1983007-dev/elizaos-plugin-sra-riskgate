@@ -6,6 +6,7 @@
   loaded only when the plugin's actions run. CI installs the packed package with only viem to check this.
 - Fixed: `CHECK_STABLECOIN_PAYMENT` threw if the model call failed while reading the request; it now
   reports a hold (`CHECK_FAILED`), like `SEND_USDC_CHECKED`.
+- `npm pack` now builds `dist/` first (a `prepack` script), so a packed tarball always contains the code.
 
 ## 0.1.0 — 2026-10-22
 - First release. `guardWalletClient()` checks every transaction a viem wallet client would broadcast:
