@@ -1,0 +1,41 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    name: Node ${{ matrix.node }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ["20", "22"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm ci
+      - run: npm run build
+      - run: npm test
+
+  parity:
+    name: vectors match the Python SDK
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install "sra-riskgate==0.8.0"
+      - run: python -I scripts/make_vectors.py /tmp/vectors.json
+      - name: Committed vectors match the published SDK
+        run: |
+          python - <<'PY'
+          import json, sys
+          a = json.load(open("/tmp/vectors.json"))
+          b = json.load(open("test/vectors.json"))
+          sys.exit(0 if a == b else "test/vectors.json is out of date; regenerate it with npm run parity")
+          PY
