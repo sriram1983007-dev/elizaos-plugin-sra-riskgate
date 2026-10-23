@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.2 — 2026-10-22
+- Added a complete demo agent in `examples/eliza-demo` (ElizaOS 1.7.2, Base Sepolia, Gemini or Ollama), and
+  its results in the README.
+- Added a logo and banner (`images/`), and `agentConfig` in `package.json` for the ElizaOS plugin registry.
+  No code changes.
+
 ## 0.1.1 — 2026-10-22
 - Fixed: importing the package without `@elizaos/core` installed failed with `ERR_MODULE_NOT_FOUND`, so
   `checkPayment` and `guardWalletClient` could not be used outside ElizaOS as documented. ElizaOS is now
