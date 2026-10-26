@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.3 — 2026-10-25
+- Fixed: the wallet guard ignored EIP-7702 `authorizationList`, so a USDC transfer that also delegated the
+  account to contract code was approved, and `signAuthorization` was not guarded at all. Any delegation
+  (an `authorizationList`, a type-4 transaction, a raw `0x04…` transaction, or `signAuthorization`) is now
+  held with flag `CODE_DELEGATION`, which `allowUnsupported` does not bypass. New export `delegationHold()`.
+  Thanks to Carlos (Bloqarl) on DEV.to for the question that found this.
+
 ## 0.1.2 — 2026-10-22
 - Added a complete demo agent in `examples/eliza-demo` (ElizaOS 1.7.2, Base Sepolia, Gemini or Ollama), and
   its results in the README.

@@ -37,6 +37,12 @@ Everything else the wallet could do (native ETH, other contracts, `approve()`, s
 is **blocked** unless you pass `allowUnsupported: true`, so nothing reaches the chain unchecked by accident.
 `allowUnsupported` never lets a held USDC payment through.
 
+EIP-7702 code delegation is always **held**, even with `allowUnsupported`: a transaction carrying an
+`authorizationList`, a type-4 transaction (signed or raw), and `signAuthorization` all throw with flag
+`CODE_DELEGATION`, because a delegation lets contract code move every asset in the account, and one signed
+with chain id 0 is valid on every chain. Approve delegations outside the agent. The guard only sees calls
+made through the wrapped client, so do not give the agent the raw account or private key.
+
 ## ElizaOS plugin
 
 ```ts
