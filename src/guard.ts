@@ -5,6 +5,9 @@
  * or `writeContract`) is decoded and checked; it is only sent on `approve`. Everything else the wallet
  * could do (native ETH transfers, other contract calls, raw or pre-signed transactions, signing) is
  * blocked unless you opt in, so nothing reaches the chain unchecked by accident.
+ *
+ * EIP-7702 code delegation (an `authorizationList`, a type-4 transaction, or `signAuthorization`) hands
+ * control of the account to contract code, so it is always held, even with `allowUnsupported`.
  */
 import { checkPayment, isUsdc, type Policy, type Verdict } from "./checks.js";
 
@@ -49,6 +52,44 @@ function held(reason: string): Verdict {
   return { decision: "hold", riskScore: 0.65, flags: ["CHECK_FAILED"], explanation: reason, requiredActions: ["manual_review"] };
 }
 
+const DELEGATION_METHODS = new Set(["signAuthorization", "experimental_signAuthorization"]);
+
+function isType4(tx: any): boolean {
+  const t = tx?.type;
+  if (t === "eip7702" || t === 4 || t === 4n) return true;
+  return typeof t === "string" && ["4", "0x4", "0x04"].includes(t.trim().toLowerCase());
+}
+
+function describeAuthorization(auth: any): string {
+  const target = auth?.contractAddress ?? auth?.address;
+  const chain = auth?.chainId;
+  const where = chain === 0 || chain === 0n || chain === "0x0" ? "on every chain (chain id 0)" : chain !== undefined ? `on chain ${String(chain)}` : "";
+  return [target ? `to contract ${String(target)}` : "", where].filter(Boolean).join(" ");
+}
+
+/** A hold for EIP-7702 code delegation, or null if the call does not delegate the account. */
+export function delegationHold(method: string, args: any): Verdict | null {
+  let detail: string | null = null;
+  if (DELEGATION_METHODS.has(method)) {
+    detail = `signing an EIP-7702 authorization ${describeAuthorization(args)}`.trim();
+  } else if (method === "sendRawTransaction") {
+    const raw = args?.serializedTransaction;
+    if (typeof raw === "string" && raw.toLowerCase().startsWith("0x04")) detail = "a signed type-4 (EIP-7702) transaction";
+  } else {
+    const list = args?.authorizationList;
+    if ((Array.isArray(list) && list.length > 0) || (list !== undefined && !Array.isArray(list)) || isType4(args)) {
+      const parts = Array.isArray(list) ? list.map(describeAuthorization).filter(Boolean) : [];
+      detail = `a transaction carrying an EIP-7702 authorizationList${parts.length ? ` (delegates ${parts.join("; ")})` : ""}`;
+    }
+  }
+  if (!detail) return null;
+  return {
+    decision: "hold", riskScore: 0.95, flags: ["CODE_DELEGATION"],
+    explanation: `SRA-RiskGate holds ${detail}: it lets contract code control every asset in the account, not one payment.`,
+    requiredActions: ["manual_review"],
+  };
+}
+
 /** The payment a transaction would make, or a reason it cannot be checked. */
 function decode(method: string, client: any, args: any): DecodedPayment | string {
   const chainId: number | undefined = args?.chain?.id ?? client?.chain?.id;
@@ -74,10 +115,15 @@ function decode(method: string, client: any, args: any): DecodedPayment | string
 }
 
 const GUARDED = new Set(["sendTransaction", "writeContract", "sendRawTransaction", "signTransaction",
-  "sendCalls", "deployContract"]);
+  "sendCalls", "deployContract", ...DELEGATION_METHODS]);
 
 /** Check a transaction without sending it. */
 export function checkTransaction(client: any, method: string, args: any, options: GuardOptions = {}): Verdict {
+  const delegation = delegationHold(method, args);
+  if (delegation) {
+    options.onDecision?.({ method, verdict: delegation });
+    return delegation;
+  }
   let payment: DecodedPayment | string;
   try {
     payment = decode(method, client, args);
