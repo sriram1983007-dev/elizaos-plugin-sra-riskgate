@@ -6,6 +6,9 @@
  * could do (native ETH transfers, other contract calls, raw or pre-signed transactions, signing) is
  * blocked unless you opt in, so nothing reaches the chain unchecked by accident.
  *
+ * A `sendCalls` batch (EIP-5792) is checked call by call: it is sent only if every call is a USDC transfer
+ * and every payee's total, and the batch total, pass the checks.
+ *
  * EIP-7702 code delegation (an `authorizationList`, a type-4 transaction, or `signAuthorization`) hands
  * control of the account to contract code, so it is always held, even with `allowUnsupported`.
  */
@@ -22,7 +25,7 @@ export interface GuardOptions extends Policy {
   /** Allow transactions that are not USDC transfers (native ETH, swaps, other contracts). Default false. */
   allowUnsupported?: boolean;
   /** Called with every decision, for logging or audit. */
-  onDecision?: (event: { method: string; verdict: Verdict; payment?: DecodedPayment }) => void;
+  onDecision?: (event: { method: string; verdict: Verdict; payment?: DecodedPayment; payments?: DecodedPayment[] }) => void;
 }
 
 export interface DecodedPayment { chainId: number; sender: string; recipient: string; amount: number }
@@ -114,6 +117,71 @@ function decode(method: string, client: any, args: any): DecodedPayment | string
   return `${method} cannot be checked`;
 }
 
+const RANK: Record<string, number> = { approve: 0, hold: 1, reject: 2 };
+const atomic = (usdc: number) => BigInt(Math.round(usdc * 1e6));
+
+/**
+ * Check a sendCalls batch: every call must be a USDC transfer. Payments are grouped by payee so a large payment
+ * cannot be split into small ones, and the batch total must stay within maxAmount.
+ */
+function checkBatch(client: any, args: any, options: GuardOptions): { verdict: Verdict; payments?: DecodedPayment[] } {
+  const calls = args?.calls;
+  if (!Array.isArray(calls) || calls.length === 0) {
+    return { verdict: held("SRA-RiskGate cannot check this transaction: the sendCalls batch has no calls.") };
+  }
+  const payments: DecodedPayment[] = [];
+  const unsupported: string[] = [];
+  calls.forEach((c: any, i: number) => {
+    const base = { account: args?.account, chain: args?.chain };
+    let r: DecodedPayment | string;
+    try {
+      r = c?.abi !== undefined || c?.functionName !== undefined
+        ? decode("writeContract", client, { ...base, ...c, address: c?.address ?? c?.to })
+        : decode("sendTransaction", client, { ...base, ...c });
+    } catch (e) {
+      r = `it could not be read (${(e as Error).message})`;
+    }
+    if (typeof r === "string") unsupported.push(`call ${i + 1} of ${calls.length}: ${r}`);
+    else payments.push(r);
+  });
+
+  // Every payee's total goes through the full checks; the worst verdict wins.
+  const byPayee = new Map<string, DecodedPayment>();
+  for (const p of payments) {
+    const key = p.recipient.toLowerCase();
+    const prev = byPayee.get(key);
+    byPayee.set(key, prev ? { ...prev, amount: Number(atomic(prev.amount) + atomic(p.amount)) / 1e6 } : { ...p });
+  }
+  let worst: Verdict | null = null;
+  for (const p of byPayee.values()) {
+    const v = checkPayment({ chainId: p.chainId, sender: p.sender, recipient: p.recipient, amount: p.amount }, options);
+    if (!worst || RANK[v.decision] > RANK[worst.decision]) worst = v;
+  }
+  if (worst && worst.decision !== "approve") {
+    return { verdict: { ...worst, explanation: `In a batch of ${calls.length} calls: ${worst.explanation}` }, payments };
+  }
+  const total = payments.reduce((sum, p) => sum + atomic(p.amount), 0n);
+  const max = options.maxAmount ?? 1000;
+  if (byPayee.size > 1 && Number(total) / 1e6 > max) {
+    return {
+      verdict: {
+        decision: "hold", riskScore: 0.65, flags: ["HIGH_VALUE_TRANSFER"], requiredActions: ["manual_review"],
+        explanation: `The batch sends ${Number(total) / 1e6} USDC in total to ${byPayee.size} payees, over the single-transaction ceiling ${max}.`,
+      },
+      payments,
+    };
+  }
+  if (unsupported.length) {
+    return { verdict: held(`SRA-RiskGate cannot check this transaction: ${unsupported.join("; ")}.`), payments };
+  }
+  const notes = worst?.flags ?? [];
+  return {
+    verdict: { decision: "approve", riskScore: worst?.riskScore ?? 0, flags: notes, requiredActions: [],
+      explanation: `All ${calls.length} calls are USDC transfers that pass the checks (${Number(total) / 1e6} USDC to ${byPayee.size} payee${byPayee.size === 1 ? "" : "s"}).` },
+    payments,
+  };
+}
+
 const GUARDED = new Set(["sendTransaction", "writeContract", "sendRawTransaction", "signTransaction",
   "sendCalls", "deployContract", ...DELEGATION_METHODS]);
 
@@ -123,6 +191,16 @@ export function checkTransaction(client: any, method: string, args: any, options
   if (delegation) {
     options.onDecision?.({ method, verdict: delegation });
     return delegation;
+  }
+  if (method === "sendCalls") {
+    let r: { verdict: Verdict; payments?: DecodedPayment[] };
+    try {
+      r = checkBatch(client, args, options);
+    } catch (e) {
+      r = { verdict: held(`SRA-RiskGate cannot check this transaction: the batch could not be read (${(e as Error).message}).`) };
+    }
+    options.onDecision?.({ method, verdict: r.verdict, payments: r.payments });
+    return r.verdict;
   }
   let payment: DecodedPayment | string;
   try {
