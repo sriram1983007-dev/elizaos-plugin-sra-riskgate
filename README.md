@@ -37,6 +37,12 @@ Everything else the wallet could do (native ETH, other contracts, `approve()`, s
 is **blocked** unless you pass `allowUnsupported: true`, so nothing reaches the chain unchecked by accident.
 `allowUnsupported` never lets a held USDC payment through.
 
+A `sendCalls` batch (EIP-5792) is checked call by call and sent only if every call is a USDC transfer that
+passes. Payments to the same payee are added up before the checks, so a large payment cannot slip under
+`maxAmount` by being split, and the whole batch is held if its total is over `maxAmount`. A batch with any other
+call is blocked (and names the call), unless you pass `allowUnsupported`, which still never lets a held USDC
+transfer in the batch through.
+
 EIP-7702 code delegation is always **held**, even with `allowUnsupported`: a transaction carrying an
 `authorizationList`, a type-4 transaction (signed or raw), and `signAuthorization` all throw with flag
 `CODE_DELEGATION`, because a delegation lets contract code move every asset in the account, and one signed

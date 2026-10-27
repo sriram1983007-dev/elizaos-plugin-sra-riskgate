@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.0 — 2026-10-26
+- `sendCalls` (EIP-5792 call batches) is now checked instead of always blocked. Each call, raw calldata or
+  ABI-encoded, must be a USDC transfer; payments to the same payee are added up before `checkPayment`, so splitting
+  a payment does not get it under `maxAmount`, and a batch whose total is over `maxAmount` is held
+  (`HIGH_VALUE_TRANSFER`). Any other call blocks the batch and is named in the explanation.
+- Changed: with `allowUnsupported`, USDC transfers inside a `sendCalls` batch are now checked too (before, the
+  whole batch went through unchecked).
+- `onDecision` receives `payments` for a batch.
+
 ## 0.1.3 — 2026-10-25
 - Fixed: the wallet guard ignored EIP-7702 `authorizationList`, so a USDC transfer that also delegated the
   account to contract code was approved, and `signAuthorization` was not guarded at all. Any delegation

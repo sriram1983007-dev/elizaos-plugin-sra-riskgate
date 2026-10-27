@@ -1,6 +1,6 @@
 {
   "name": "elizaos-plugin-sra-riskgate",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "SRA-RiskGate for ElizaOS: check stablecoin payments before an agent's wallet broadcasts them",
   "type": "module",
   "main": "dist/index.js",
