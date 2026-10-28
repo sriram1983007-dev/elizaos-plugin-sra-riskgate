@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.3.0 — 2026-10-27
+- Fixed: the wallet guard did not wrap `signTypedData` or `signMessage`, so an agent could sign an unlimited USDC
+  permit, or a long-lived x402 authorization, through the guarded client unchecked. Now:
+  - a USDC x402 authorization (EIP-3009, and Circle Gateway batched payments on Circle's GatewayWallet contract)
+    gets the payment checks and a validity limit (`maxValiditySeconds`, default 1 hour;
+    `maxGatewayValiditySeconds`, default 8 days);
+  - any EIP-2612 or Permit2 permit is held as `TOKEN_APPROVAL` (plus `UNLIMITED_APPROVAL`), which
+    `allowUnsupported` does not bypass;
+  - other typed data and `signMessage` are blocked unless `allowUnsupported` is set.
+- New export `checkAuthorization()`, the port of the Python SDK's `check_authorization`, with parity vectors
+  generated from the Python SDK (`scripts/make_auth_vectors.py`, `test/auth_vectors.json`).
+
 ## 0.2.0 — 2026-10-26
 - `sendCalls` (EIP-5792 call batches) is now checked instead of always blocked. Each call, raw calldata or
   ABI-encoded, must be a USDC transfer; payments to the same payee are added up before `checkPayment`, so splitting

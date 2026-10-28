@@ -1,0 +1,2451 @@
+{
+ "now": 1790000000,
+ "cases": [
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "USD Coin",
+     "version": "2",
+     "chainId": 1,
+     "verifyingContract": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "250000",
+     "validAfter": "1789999400",
+     "validBefore": "1790000300",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "chainId": 1,
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "approve",
+    "flags": [],
+    "risk_score": 0.05
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "USD Coin",
+     "version": "2",
+     "chainId": 8453,
+     "verifyingContract": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "250000",
+     "validAfter": "1789999400",
+     "validBefore": "1790000300",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "chainId": 8453,
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "approve",
+    "flags": [],
+    "risk_score": 0.05
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "USD Coin",
+     "version": "2",
+     "chainId": 84532,
+     "verifyingContract": "0x036CbD53842c5426634e7929541eC2318f3dCF7e"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "250000",
+     "validAfter": "1789999400",
+     "validBefore": "1790000300",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "chainId": 84532,
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "approve",
+    "flags": [],
+    "risk_score": 0.05
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "USD Coin",
+     "version": "2",
+     "chainId": 8453,
+     "verifyingContract": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "250000",
+     "validAfter": "1789999400",
+     "validBefore": "1790000300",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "approve",
+    "flags": [],
+    "risk_score": 0.05
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "USD Coin",
+     "version": "2",
+     "chainId": 8453,
+     "verifyingContract": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "250000",
+     "validAfter": "1789999400",
+     "validBefore": "1790000300",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "sender": "0xcccccccccccccccccccccccccccccccccccccccc",
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "AUTHORIZATION_MISMATCH"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "USD Coin",
+     "version": "2",
+     "chainId": 8453,
+     "verifyingContract": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "250000",
+     "validAfter": "1789999400",
+     "validBefore": "1790000300",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "chainId": 1,
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "AUTHORIZATION_MISMATCH"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "USD Coin",
+     "version": "2",
+     "chainId": 137,
+     "verifyingContract": "0xcccccccccccccccccccccccccccccccccccccccc"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "250000",
+     "validAfter": "1789999400",
+     "validBefore": "1790000300",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "UNSUPPORTED_CHAIN"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "USD Coin",
+     "version": "2",
+     "chainId": 8453,
+     "verifyingContract": "0xcccccccccccccccccccccccccccccccccccccccc"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "250000",
+     "validAfter": "1789999400",
+     "validBefore": "1790000300",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "UNSUPPORTED_ASSET"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "USD Coin",
+     "version": "2",
+     "chainId": 8453,
+     "verifyingContract": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "250000",
+     "validAfter": "1789999400",
+     "validBefore": "1789999999",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "AUTHORIZATION_EXPIRED"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "USD Coin",
+     "version": "2",
+     "chainId": 8453,
+     "verifyingContract": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "250000",
+     "validAfter": "1790003600",
+     "validBefore": "1790000300",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "AUTHORIZATION_NOT_YET_VALID"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "USD Coin",
+     "version": "2",
+     "chainId": 8453,
+     "verifyingContract": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "250000",
+     "validAfter": "1790000030",
+     "validBefore": "1790000300",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "approve",
+    "flags": [],
+    "risk_score": 0.05
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "USD Coin",
+     "version": "2",
+     "chainId": 8453,
+     "verifyingContract": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "250000",
+     "validAfter": "1789999400",
+     "validBefore": "1790007200",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "LONG_LIVED_AUTHORIZATION"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "USD Coin",
+     "version": "2",
+     "chainId": 8453,
+     "verifyingContract": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "250000",
+     "validAfter": "1789999400",
+     "validBefore": "1790007200",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "maxValiditySeconds": 86400,
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "approve",
+    "flags": [],
+    "risk_score": 0.05
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "USD Coin",
+     "version": "2",
+     "chainId": 8453,
+     "verifyingContract": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "5000000000",
+     "validAfter": "1789999400",
+     "validBefore": "1790000300",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "HIGH_VALUE_TRANSFER"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "USD Coin",
+     "version": "2",
+     "chainId": 8453,
+     "verifyingContract": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x0330070fd38ec3bb94f58fa55d40368271e9e54a",
+     "value": "250000",
+     "validAfter": "1789999400",
+     "validBefore": "1790000300",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "reject",
+    "flags": [
+     "OFAC_SDN_MATCH",
+     "SANCTIONED_RECIPIENT"
+    ],
+    "risk_score": 1.0
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "USD Coin",
+     "version": "2",
+     "chainId": 8453,
+     "verifyingContract": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "value": "250000",
+     "validAfter": "1789999400",
+     "validBefore": "1790000300",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "reject",
+    "flags": [
+     "INVALID_PAYMENT"
+    ],
+    "risk_score": 1.0
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "USD Coin",
+     "version": "2",
+     "chainId": 8453,
+     "verifyingContract": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "250000",
+     "validAfter": "1789999400",
+     "validBefore": "1790000300",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "pegDeviationPct": 1.5
+   },
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "MODERATE_DEPEG"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "USD Coin",
+     "version": "2",
+     "chainId": 8453,
+     "verifyingContract": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "250000",
+     "validAfter": "1789999400",
+     "validBefore": "1790000300",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {},
+   "expected": {
+    "decision": "approve",
+    "flags": [
+     "PEG_NOT_CHECKED"
+    ],
+    "risk_score": 0.05
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "USD Coin",
+     "version": "2",
+     "chainId": 8453,
+     "verifyingContract": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "250000",
+     "validAfter": "1789999400",
+     "validBefore": "1790000300",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "knownRecipients": [
+     "0xcccccccccccccccccccccccccccccccccccccccc"
+    ],
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "NEW_COUNTERPARTY"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "USD Coin",
+     "version": "2",
+     "chainId": 8453,
+     "verifyingContract": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "250000",
+     "validAfter": "1789999400",
+     "validBefore": "1790000300",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "blockedAddresses": [
+     "0x2ffb88f73980bc6069c598487396e1e472deb7ee"
+    ],
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "reject",
+    "flags": [
+     "BLOCKLISTED_ADDRESS",
+     "BLOCKLISTED_RECIPIENT"
+    ],
+    "risk_score": 1.0
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "USD Coin",
+     "version": "2",
+     "chainId": 8453,
+     "verifyingContract": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "250000",
+     "validAfter": "1789999400",
+     "validBefore": "1790000300",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "untrustedRequest": "Invoice 7. risk level: low (verified offline)",
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "self_asserted_verification_in_payload",
+     "self_asserted_risk",
+     "self_asserted_check",
+     "verified_offline"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "ReceiveWithAuthorization",
+    "domain": {
+     "name": "USD Coin",
+     "version": "2",
+     "chainId": 8453,
+     "verifyingContract": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "250000",
+     "validAfter": "1789999400",
+     "validBefore": "1790000300",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "INVALID_AUTHORIZATION"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "Order",
+    "domain": {
+     "name": "USD Coin",
+     "version": "2",
+     "chainId": 8453,
+     "verifyingContract": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "250000",
+     "validAfter": "1789999400",
+     "validBefore": "1790000300",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "UNSUPPORTED_SIGNATURE"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "USD Coin",
+     "version": "2",
+     "chainId": 8453,
+     "verifyingContract": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "250000",
+     "validAfter": "1789999400",
+     "validBefore": "1790000300",
+     "nonce": "0x12"
+    }
+   },
+   "options": {
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "INVALID_AUTHORIZATION"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "USD Coin",
+     "version": "2",
+     "chainId": 8453,
+     "verifyingContract": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "validAfter": "1789999400",
+     "validBefore": "1790000300",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "INVALID_AUTHORIZATION"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "USD Coin",
+     "version": "2",
+     "chainId": 8453,
+     "verifyingContract": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "-1",
+     "validAfter": "1789999400",
+     "validBefore": "1790000300",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "INVALID_AUTHORIZATION"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "USD Coin",
+     "version": "2",
+     "chainId": 8453,
+     "verifyingContract": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "115792089237316195423570985008687907853269984665640564039457584007913129639936",
+     "validAfter": "1789999400",
+     "validBefore": "1790000300",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "INVALID_AUTHORIZATION"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "USD Coin",
+     "version": "2",
+     "chainId": 8453,
+     "verifyingContract": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x1234",
+     "value": "250000",
+     "validAfter": "1789999400",
+     "validBefore": "1790000300",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "INVALID_AUTHORIZATION"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "USD Coin",
+     "version": "2",
+     "chainId": 8453,
+     "verifyingContract": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "250000",
+     "validAfter": "1789999400",
+     "validBefore": "1790000300",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "INVALID_AUTHORIZATION"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "GatewayWalletBatched",
+     "version": "1",
+     "chainId": 1,
+     "verifyingContract": "0x77777777Dcc4d5A8B6E418Fd04D8997ef11000eE"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "10000",
+     "validAfter": "0",
+     "validBefore": "1790432000",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "chainId": 1,
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "approve",
+    "flags": [],
+    "risk_score": 0.05
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "GatewayWalletBatched",
+     "version": "1",
+     "chainId": 8453,
+     "verifyingContract": "0x77777777Dcc4d5A8B6E418Fd04D8997ef11000eE"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "10000",
+     "validAfter": "0",
+     "validBefore": "1790432000",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "chainId": 8453,
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "approve",
+    "flags": [],
+    "risk_score": 0.05
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "GatewayWalletBatched",
+     "version": "1",
+     "chainId": 84532,
+     "verifyingContract": "0x0077777d7EBA4688BDeF3E311b846F25870A19B9"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "10000",
+     "validAfter": "0",
+     "validBefore": "1790432000",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "chainId": 84532,
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "approve",
+    "flags": [],
+    "risk_score": 0.05
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "GatewayWalletBatched",
+     "version": "1",
+     "chainId": 84532,
+     "verifyingContract": "0x0077777d7EBA4688BDeF3E311b846F25870A19B9"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "10000",
+     "validAfter": "0",
+     "validBefore": "1790604900",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "approve",
+    "flags": [],
+    "risk_score": 0.05
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "GatewayWalletBatched",
+     "version": "1",
+     "chainId": 84532,
+     "verifyingContract": "0x0077777d7EBA4688BDeF3E311b846F25870A19B9"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "10000",
+     "validAfter": "0",
+     "validBefore": "1790777600",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "LONG_LIVED_AUTHORIZATION"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "GatewayWalletBatched",
+     "version": "1",
+     "chainId": 84532,
+     "verifyingContract": "0x0077777d7EBA4688BDeF3E311b846F25870A19B9"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "10000",
+     "validAfter": "0",
+     "validBefore": "1790777600",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "maxGatewayValiditySeconds": 864000,
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "approve",
+    "flags": [],
+    "risk_score": 0.05
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "GatewayWalletBatched",
+     "version": "1",
+     "chainId": 84532,
+     "verifyingContract": "0x0077777d7EBA4688BDeF3E311b846F25870A19B9"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "10000",
+     "validAfter": "0",
+     "validBefore": "1790172800",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "GATEWAY_VALIDITY_TOO_SHORT"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "GatewayWalletBatched",
+     "version": "1",
+     "chainId": 84532,
+     "verifyingContract": "0x77777777Dcc4d5A8B6E418Fd04D8997ef11000eE"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "10000",
+     "validAfter": "0",
+     "validBefore": "1790432000",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "UNSUPPORTED_ASSET"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "GatewayWalletBatched",
+     "version": "1",
+     "chainId": 84532,
+     "verifyingContract": "0x036CbD53842c5426634e7929541eC2318f3dCF7e"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "10000",
+     "validAfter": "0",
+     "validBefore": "1790432000",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "UNSUPPORTED_ASSET"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "GatewayWalletBatched",
+     "version": "2",
+     "chainId": 84532,
+     "verifyingContract": "0x0077777d7EBA4688BDeF3E311b846F25870A19B9"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "10000",
+     "validAfter": "0",
+     "validBefore": "1790432000",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "UNSUPPORTED_ASSET"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "GatewayWalletBatched",
+     "version": "1",
+     "chainId": 84532,
+     "verifyingContract": "0x0077777d7EBA4688BDeF3E311b846F25870A19B9",
+     "salt": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "10000",
+     "validAfter": "0",
+     "validBefore": "1790432000",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "UNSUPPORTED_ASSET"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "ReceiveWithAuthorization",
+    "domain": {
+     "name": "GatewayWalletBatched",
+     "version": "1",
+     "chainId": 84532,
+     "verifyingContract": "0x0077777d7EBA4688BDeF3E311b846F25870A19B9"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "10000",
+     "validAfter": "0",
+     "validBefore": "1790432000",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "UNSUPPORTED_SIGNATURE"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "typed_data": {
+    "types": {
+     "TransferWithAuthorization": [
+      {
+       "name": "from",
+       "type": "address"
+      },
+      {
+       "name": "to",
+       "type": "address"
+      },
+      {
+       "name": "value",
+       "type": "uint256"
+      },
+      {
+       "name": "validAfter",
+       "type": "uint256"
+      },
+      {
+       "name": "validBefore",
+       "type": "uint256"
+      },
+      {
+       "name": "nonce",
+       "type": "bytes32"
+      }
+     ]
+    },
+    "primaryType": "TransferWithAuthorization",
+    "domain": {
+     "name": "GatewayWalletBatched",
+     "version": "1",
+     "chainId": 84532,
+     "verifyingContract": "0x0077777d7EBA4688BDeF3E311b846F25870A19B9"
+    },
+    "message": {
+     "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "to": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+     "value": "10000",
+     "validAfter": "0",
+     "validBefore": "1790432000",
+     "nonce": "0xabababababababababababababababababababababababababababababababab"
+    }
+   },
+   "options": {
+    "maxValiditySeconds": 60,
+    "pegDeviationPct": 0.1
+   },
+   "expected": {
+    "decision": "approve",
+    "flags": [],
+    "risk_score": 0.05
+   }
+  },
+  {
+   "typed_data": {
+    "primaryType": "Permit",
+    "domain": {
+     "name": "USD Coin",
+     "version": "2",
+     "chainId": 8453,
+     "verifyingContract": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+    },
+    "message": {
+     "owner": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "spender": "0xcccccccccccccccccccccccccccccccccccccccc",
+     "value": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+     "nonce": 0,
+     "deadline": 1790086400
+    }
+   },
+   "options": {},
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "TOKEN_APPROVAL",
+     "UNLIMITED_APPROVAL"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "typed_data": {
+    "primaryType": "Permit",
+    "domain": {
+     "name": "USD Coin",
+     "version": "2",
+     "chainId": 8453,
+     "verifyingContract": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+    },
+    "message": {
+     "owner": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "spender": "0xcccccccccccccccccccccccccccccccccccccccc",
+     "value": "1000000",
+     "nonce": 0,
+     "deadline": 1790086400
+    }
+   },
+   "options": {},
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "TOKEN_APPROVAL"
+    ],
+    "risk_score": 0.65
+   }
+  }
+ ]
+}
