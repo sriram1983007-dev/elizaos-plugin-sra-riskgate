@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.0 — 2026-10-28
+- **Address-poisoning check**, matching `sra-riskgate` 0.15.0: with `knownRecipients` set, a recipient that is not
+  known but imitates a known payee (at least 7 matching hex characters, at least 3 at each end) is rejected as
+  `LOOKALIKE_RECIPIENT`, naming the payee it imitates. It applies to every payment the guard checks (transfers,
+  batches, x402 authorizations), and `allowUnsupported` does not bypass it. New exports `findLookalike()` and
+  `LOOKALIKE_FLAG`. Parity vectors regenerated from the Python SDK 0.15.0 (150 cases).
+
 ## 0.3.0 — 2026-10-27
 - Fixed: the wallet guard did not wrap `signTypedData` or `signMessage`, so an agent could sign an unlimited USDC
   permit, or a long-lived x402 authorization, through the guarded client unchecked. Now:

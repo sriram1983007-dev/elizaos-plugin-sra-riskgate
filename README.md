@@ -50,6 +50,10 @@ as `TOKEN_APPROVAL` (plus `UNLIMITED_APPROVAL`), even with `allowUnsupported`: a
 wallet's tokens later. Other typed data and `signMessage` are blocked unless you pass `allowUnsupported`. The
 typed-data checks match the Python SDK's `check_authorization` case for case (`test/auth_vectors.json`).
 
+With `knownRecipients` set, a payment to an address that imitates one of your payees (address poisoning: the same
+first and last characters, such as `0x2ffb…b7ee` for `0x2ffb88…472deb7ee`) is **rejected** as
+`LOOKALIKE_RECIPIENT`, naming the payee it imitates. Same rule as the Python SDK 0.15.0, checked case for case.
+
 EIP-7702 code delegation is always **held**, even with `allowUnsupported`: a transaction carrying an
 `authorizationList`, a type-4 transaction (signed or raw), and `signAuthorization` all throw with flag
 `CODE_DELEGATION`, because a delegation lets contract code move every asset in the account, and one signed
