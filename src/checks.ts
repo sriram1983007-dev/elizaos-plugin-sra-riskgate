@@ -52,6 +52,33 @@ const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";
 const ADDRESS = /^0x[0-9a-fA-F]{40}$/;
 const NOTES = new Set(["PEG_NOT_CHECKED", "SANCTIONS_NOT_CHECKED", "ROUND_AMOUNT", "SANCTIONS_LIST_STALE"]);
 export const CLAIMS_FLAG = "self_asserted_verification_in_payload";
+export const LOOKALIKE_FLAG = "LOOKALIKE_RECIPIENT";
+
+function sharedLength(a: string, b: string): number {
+  let n = 0;
+  while (n < a.length && n < b.length && a[n] === b[n]) n++;
+  return n;
+}
+
+/**
+ * The known payee that `recipient` imitates (address poisoning), as [address, shared prefix, shared suffix], or
+ * null. A look-alike is not itself known and shares at least 7 hex characters with a known payee, at least 3 at
+ * each end; a random address does that about once in 140 million tries. Of several matches, the closest wins.
+ */
+export function findLookalike(recipient: unknown, known: Set<string> | null): [string, number, number] | null {
+  const r = typeof recipient === "string" ? recipient.trim().toLowerCase() : null;
+  if (!r || !ADDRESS.test(r) || !known || known.size === 0 || known.has(r)) return null;
+  const rh = r.slice(2), rr = [...rh].reverse().join("");
+  let best: [string, number, number] | null = null;
+  for (const k of known) {
+    const kh = k.slice(2);
+    const prefix = sharedLength(rh, kh), suffix = sharedLength(rr, [...kh].reverse().join(""));
+    if (prefix >= 3 && suffix >= 3 && prefix + suffix >= 7 && (!best || prefix + suffix > best[1] + best[2])) {
+      best = [k, prefix, suffix];
+    }
+  }
+  return best;
+}
 
 export function isUsdc(chainId: number | null | undefined, asset: unknown): boolean {
   const expected = chainId == null ? undefined : USDC_ADDRESSES[chainId];
@@ -194,7 +221,14 @@ function checkPaymentInner(p: PaymentCheck, policy: Policy): Verdict {
   if (atomicUnits(amount) < 1n) return invalid(`Amount ${amount} is below the smallest USDC unit (0.000001) and rounds to zero on-chain.`);
   if (sender === recipient) return invalid("Self-transfer detected: sender and recipient addresses cannot be identical.");
 
-  // 4. Rules.
+  // 4. Rules. A look-alike of a known payee first: that is address poisoning, not a new payee.
+  const lookalike = findLookalike(recipient, known);
+  if (lookalike) {
+    const [imitated, prefix, suffix] = lookalike;
+    return verdict("reject", [LOOKALIKE_FLAG],
+      `The recipient ${p.recipient} is not one of your known payees, but it imitates ${imitated}: both start 0x${recipient.slice(2, 2 + prefix)} and end ${recipient.slice(-suffix)}. This is the pattern of address poisoning, where an attacker plants a look-alike address in the wallet's history. Do not pay; take the payee's address from your own records.`,
+      ["reject_payment", "verify_recipient"], 0.95);
+  }
   const pegObserved = p.pegDeviationPct !== null && p.pegDeviationPct !== undefined;
   const peg = pegObserved ? (p.pegDeviationPct as number) : 0;
   if (typeof peg !== "number" || !Number.isFinite(peg)) {

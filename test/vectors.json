@@ -2052,6 +2052,495 @@
    }
   },
   {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 8453,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0x2ffb00000001000100000000000000000000b7ee",
+    "amount": 20.0,
+    "peg_deviation_pct": 0.1,
+    "known_recipients": [
+     "0x2ffb88f73980bc6069c598487396e1e472deb7ee"
+    ]
+   },
+   "nan": [],
+   "expected": {
+    "decision": "reject",
+    "flags": [
+     "LOOKALIKE_RECIPIENT"
+    ],
+    "risk_score": 0.95
+   }
+  },
+  {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 8453,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0x2ffb00000001000100000000000000000000b7ee",
+    "amount": 20.0,
+    "peg_deviation_pct": 0.1,
+    "known_recipients": [
+     "0xcccccccccccccccccccccccccccccccccccccccc",
+     "0x2ffb88f73980bc6069c598487396e1e472deb7ee"
+    ]
+   },
+   "nan": [],
+   "expected": {
+    "decision": "reject",
+    "flags": [
+     "LOOKALIKE_RECIPIENT"
+    ],
+    "risk_score": 0.95
+   }
+  },
+  {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 8453,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0x2ffb88000001000100000000000000000000b7ee",
+    "amount": 20.0,
+    "peg_deviation_pct": 0.1,
+    "known_recipients": [
+     "0x2ffb88f73980bc6069c598487396e1e472deb7ee"
+    ]
+   },
+   "nan": [],
+   "expected": {
+    "decision": "reject",
+    "flags": [
+     "LOOKALIKE_RECIPIENT"
+    ],
+    "risk_score": 0.95
+   }
+  },
+  {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 8453,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0x2ffb88000001000100000000000000000000b7ee",
+    "amount": 20.0,
+    "peg_deviation_pct": 0.1,
+    "known_recipients": [
+     "0xcccccccccccccccccccccccccccccccccccccccc",
+     "0x2ffb88f73980bc6069c598487396e1e472deb7ee"
+    ]
+   },
+   "nan": [],
+   "expected": {
+    "decision": "reject",
+    "flags": [
+     "LOOKALIKE_RECIPIENT"
+    ],
+    "risk_score": 0.95
+   }
+  },
+  {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 8453,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0x2ff000000001000100000000000000000000b7ee",
+    "amount": 20.0,
+    "peg_deviation_pct": 0.1,
+    "known_recipients": [
+     "0x2ffb88f73980bc6069c598487396e1e472deb7ee"
+    ]
+   },
+   "nan": [],
+   "expected": {
+    "decision": "reject",
+    "flags": [
+     "LOOKALIKE_RECIPIENT"
+    ],
+    "risk_score": 0.95
+   }
+  },
+  {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 8453,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0x2ff000000001000100000000000000000000b7ee",
+    "amount": 20.0,
+    "peg_deviation_pct": 0.1,
+    "known_recipients": [
+     "0xcccccccccccccccccccccccccccccccccccccccc",
+     "0x2ffb88f73980bc6069c598487396e1e472deb7ee"
+    ]
+   },
+   "nan": [],
+   "expected": {
+    "decision": "reject",
+    "flags": [
+     "LOOKALIKE_RECIPIENT"
+    ],
+    "risk_score": 0.95
+   }
+  },
+  {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 8453,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0x2ffb0000000100010000000000000000000007ee",
+    "amount": 20.0,
+    "peg_deviation_pct": 0.1,
+    "known_recipients": [
+     "0x2ffb88f73980bc6069c598487396e1e472deb7ee"
+    ]
+   },
+   "nan": [],
+   "expected": {
+    "decision": "reject",
+    "flags": [
+     "LOOKALIKE_RECIPIENT"
+    ],
+    "risk_score": 0.95
+   }
+  },
+  {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 8453,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0x2ffb0000000100010000000000000000000007ee",
+    "amount": 20.0,
+    "peg_deviation_pct": 0.1,
+    "known_recipients": [
+     "0xcccccccccccccccccccccccccccccccccccccccc",
+     "0x2ffb88f73980bc6069c598487396e1e472deb7ee"
+    ]
+   },
+   "nan": [],
+   "expected": {
+    "decision": "reject",
+    "flags": [
+     "LOOKALIKE_RECIPIENT"
+    ],
+    "risk_score": 0.95
+   }
+  },
+  {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 8453,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0x2ffb88f73901000100000000000000e472deb7ee",
+    "amount": 20.0,
+    "peg_deviation_pct": 0.1,
+    "known_recipients": [
+     "0x2ffb88f73980bc6069c598487396e1e472deb7ee"
+    ]
+   },
+   "nan": [],
+   "expected": {
+    "decision": "reject",
+    "flags": [
+     "LOOKALIKE_RECIPIENT"
+    ],
+    "risk_score": 0.95
+   }
+  },
+  {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 8453,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0x2ffb88f73901000100000000000000e472deb7ee",
+    "amount": 20.0,
+    "peg_deviation_pct": 0.1,
+    "known_recipients": [
+     "0xcccccccccccccccccccccccccccccccccccccccc",
+     "0x2ffb88f73980bc6069c598487396e1e472deb7ee"
+    ]
+   },
+   "nan": [],
+   "expected": {
+    "decision": "reject",
+    "flags": [
+     "LOOKALIKE_RECIPIENT"
+    ],
+    "risk_score": 0.95
+   }
+  },
+  {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 8453,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0x2ff00000000100010000000000000000000007ee",
+    "amount": 20.0,
+    "peg_deviation_pct": 0.1,
+    "known_recipients": [
+     "0x2ffb88f73980bc6069c598487396e1e472deb7ee"
+    ]
+   },
+   "nan": [],
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "NEW_COUNTERPARTY"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 8453,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0x2ff00000000100010000000000000000000007ee",
+    "amount": 20.0,
+    "peg_deviation_pct": 0.1,
+    "known_recipients": [
+     "0xcccccccccccccccccccccccccccccccccccccccc",
+     "0x2ffb88f73980bc6069c598487396e1e472deb7ee"
+    ]
+   },
+   "nan": [],
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "NEW_COUNTERPARTY"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 8453,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0x2f00000000010001000000000000000000deb7ee",
+    "amount": 20.0,
+    "peg_deviation_pct": 0.1,
+    "known_recipients": [
+     "0x2ffb88f73980bc6069c598487396e1e472deb7ee"
+    ]
+   },
+   "nan": [],
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "NEW_COUNTERPARTY"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 8453,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0x2f00000000010001000000000000000000deb7ee",
+    "amount": 20.0,
+    "peg_deviation_pct": 0.1,
+    "known_recipients": [
+     "0xcccccccccccccccccccccccccccccccccccccccc",
+     "0x2ffb88f73980bc6069c598487396e1e472deb7ee"
+    ]
+   },
+   "nan": [],
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "NEW_COUNTERPARTY"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 8453,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0x2ffb8800000100010000000000000000000000ee",
+    "amount": 20.0,
+    "peg_deviation_pct": 0.1,
+    "known_recipients": [
+     "0x2ffb88f73980bc6069c598487396e1e472deb7ee"
+    ]
+   },
+   "nan": [],
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "NEW_COUNTERPARTY"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 8453,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0x2ffb8800000100010000000000000000000000ee",
+    "amount": 20.0,
+    "peg_deviation_pct": 0.1,
+    "known_recipients": [
+     "0xcccccccccccccccccccccccccccccccccccccccc",
+     "0x2ffb88f73980bc6069c598487396e1e472deb7ee"
+    ]
+   },
+   "nan": [],
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "NEW_COUNTERPARTY"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 8453,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0x0000000000010001000000000000000000000000",
+    "amount": 20.0,
+    "peg_deviation_pct": 0.1,
+    "known_recipients": [
+     "0x2ffb88f73980bc6069c598487396e1e472deb7ee"
+    ]
+   },
+   "nan": [],
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "NEW_COUNTERPARTY"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 8453,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0x0000000000010001000000000000000000000000",
+    "amount": 20.0,
+    "peg_deviation_pct": 0.1,
+    "known_recipients": [
+     "0xcccccccccccccccccccccccccccccccccccccccc",
+     "0x2ffb88f73980bc6069c598487396e1e472deb7ee"
+    ]
+   },
+   "nan": [],
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "NEW_COUNTERPARTY"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 8453,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0x2FFB00000001000100000000000000000000B7EE",
+    "amount": 20.0,
+    "peg_deviation_pct": 0.1,
+    "known_recipients": [
+     "0x2ffb88f73980bc6069c598487396e1e472deb7ee"
+    ]
+   },
+   "nan": [],
+   "expected": {
+    "decision": "reject",
+    "flags": [
+     "LOOKALIKE_RECIPIENT"
+    ],
+    "risk_score": 0.95
+   }
+  },
+  {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 8453,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0x2ffb00000001000100000000000000000000b7ee",
+    "amount": 20.0,
+    "peg_deviation_pct": 0.1,
+    "known_recipients": [
+     "0x2ffb88f73980bc6069c598487396e1e472deb7ee"
+    ],
+    "blocked_addresses": [
+     "0x2ffb00000001000100000000000000000000b7ee"
+    ]
+   },
+   "nan": [],
+   "expected": {
+    "decision": "reject",
+    "flags": [
+     "BLOCKLISTED_ADDRESS",
+     "BLOCKLISTED_RECIPIENT"
+    ],
+    "risk_score": 1.0
+   }
+  },
+  {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 8453,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0x2ffb00000001000100000000000000000000b7ee",
+    "amount": 20.0,
+    "peg_deviation_pct": 7.0,
+    "known_recipients": [
+     "0x2ffb88f73980bc6069c598487396e1e472deb7ee"
+    ]
+   },
+   "nan": [],
+   "expected": {
+    "decision": "reject",
+    "flags": [
+     "LOOKALIKE_RECIPIENT"
+    ],
+    "risk_score": 0.95
+   }
+  },
+  {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 8453,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0x2ffb00000001000100000000000000000000b7ee",
+    "amount": 20.0,
+    "peg_deviation_pct": 0.1
+   },
+   "nan": [],
+   "expected": {
+    "decision": "approve",
+    "flags": [],
+    "risk_score": 0.05
+   }
+  },
+  {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 8453,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0x2ffb88f73980bc6069c598487396e1e472deb7ee",
+    "amount": 20.0,
+    "peg_deviation_pct": 0.1,
+    "known_recipients": [
+     "0x2ffb88f73980bc6069c598487396e1e472deb7ee"
+    ]
+   },
+   "nan": [],
+   "expected": {
+    "decision": "approve",
+    "flags": [],
+    "risk_score": 0.05
+   }
+  },
+  {
    "days_after_as_of": 90,
    "input": {
     "chain_id": 8453,

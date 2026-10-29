@@ -57,6 +57,19 @@ add(**base, depeg_hold_pct=5, depeg_reject_pct=1)
 add(**base, check_sanctions=False)
 add(**{**base, "recipient": S[0]}, check_sanctions=False)
 add(**{**base, "peg_deviation_pct": None}, known_recipients=[C], untrusted_request="KYC passed")
+# 0.15.0: address poisoning. P is a real payee; each look-alike shares (prefix, suffix) hex characters with it.
+P = "0x2ffb88f73980bc6069c598487396e1e472deb7ee"
+def lookalike(prefix, suffix):
+    h = P[2:]
+    return "0x" + h[:prefix] + "".join("0" if c != "0" else "1" for c in h[prefix:40 - suffix]) + h[40 - suffix:]
+for pre, suf in [(4, 4), (6, 4), (3, 4), (4, 3), (10, 10), (3, 3), (2, 6), (6, 2), (0, 0)]:
+    add(**{**base, "recipient": lookalike(pre, suf)}, known_recipients=[P])
+    add(**{**base, "recipient": lookalike(pre, suf)}, known_recipients=[C, P])
+add(**{**base, "recipient": lookalike(4, 4).upper().replace("0X", "0x")}, known_recipients=[P])
+add(**{**base, "recipient": lookalike(4, 4)}, known_recipients=[P], blocked_addresses=[lookalike(4, 4)])
+add(**{**base, "recipient": lookalike(4, 4), "peg_deviation_pct": 7.0}, known_recipients=[P])
+add(**{**base, "recipient": lookalike(4, 4)})                     # off without known_recipients
+add(**{**base, "recipient": P}, known_recipients=[P])
 
 days = [1, 90, 91, 400]
 out = []
