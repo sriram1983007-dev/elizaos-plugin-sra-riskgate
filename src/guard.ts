@@ -9,10 +9,16 @@
  * A `sendCalls` batch (EIP-5792) is checked call by call: it is sent only if every call is a USDC transfer
  * and every payee's total, and the batch total, pass the checks.
  *
+ * Typed-data signatures (`signTypedData`) are checked too: a USDC x402 authorization (EIP-3009, or Circle
+ * Gateway's batched form) gets the payment checks and a validity limit, and any permit (EIP-2612 or Permit2)
+ * is held as a token approval, even with `allowUnsupported`. Other typed data and `signMessage` are blocked
+ * unless you opt in with `allowUnsupported`.
+ *
  * EIP-7702 code delegation (an `authorizationList`, a type-4 transaction, or `signAuthorization`) hands
  * control of the account to contract code, so it is always held, even with `allowUnsupported`.
  */
 import { checkPayment, isUsdc, type Policy, type Verdict } from "./checks.js";
+import { checkAuthorization, isApprovalSignature } from "./authorization.js";
 
 export class RiskGateBlockedError extends Error {
   constructor(public readonly verdict: Verdict) {
@@ -24,6 +30,10 @@ export class RiskGateBlockedError extends Error {
 export interface GuardOptions extends Policy {
   /** Allow transactions that are not USDC transfers (native ETH, swaps, other contracts). Default false. */
   allowUnsupported?: boolean;
+  /** Longest an x402 authorization may stay valid before it is held. Default 3600 seconds. */
+  maxValiditySeconds?: number;
+  /** The same for Circle Gateway batched payments. Default 8 days. */
+  maxGatewayValiditySeconds?: number;
   /** Called with every decision, for logging or audit. */
   onDecision?: (event: { method: string; verdict: Verdict; payment?: DecodedPayment; payments?: DecodedPayment[] }) => void;
 }
@@ -183,7 +193,19 @@ function checkBatch(client: any, args: any, options: GuardOptions): { verdict: V
 }
 
 const GUARDED = new Set(["sendTransaction", "writeContract", "sendRawTransaction", "signTransaction",
-  "sendCalls", "deployContract", ...DELEGATION_METHODS]);
+  "sendCalls", "deployContract", "signTypedData", "signMessage", ...DELEGATION_METHODS]);
+
+const CANNOT_CHECK_FLAGS = new Set(["UNSUPPORTED_ASSET", "UNSUPPORTED_SIGNATURE", "UNSUPPORTED_CHAIN"]);
+
+/** Typed data before signing: payments and permits are judged; anything else is "cannot check". */
+function checkTypedData(client: any, args: any, options: GuardOptions): Verdict {
+  const chainId: number | undefined = args?.chain?.id ?? client?.chain?.id;
+  const v = checkAuthorization(args, { ...options, sender: accountAddress(client, args), chainId });
+  if (v.decision === "hold" && v.flags.length === 1 && CANNOT_CHECK_FLAGS.has(v.flags[0]) && !isApprovalSignature(args)) {
+    return held(`SRA-RiskGate cannot check this transaction: ${v.explanation.replace(/^SRA-RiskGate cannot approve this authorization: /, "")}`);
+  }
+  return v;
+}
 
 /** Check a transaction without sending it. */
 export function checkTransaction(client: any, method: string, args: any, options: GuardOptions = {}): Verdict {
@@ -191,6 +213,13 @@ export function checkTransaction(client: any, method: string, args: any, options
   if (delegation) {
     options.onDecision?.({ method, verdict: delegation });
     return delegation;
+  }
+  if (method === "signTypedData" || method === "signMessage") {
+    const verdict = method === "signMessage"
+      ? held("SRA-RiskGate cannot check this transaction: a raw message signature can authorise anything, so its meaning cannot be checked.")
+      : checkTypedData(client, args, options);
+    options.onDecision?.({ method, verdict });
+    return verdict;
   }
   if (method === "sendCalls") {
     let r: { verdict: Verdict; payments?: DecodedPayment[] };

@@ -43,6 +43,13 @@ passes. Payments to the same payee are added up before the checks, so a large pa
 call is blocked (and names the call), unless you pass `allowUnsupported`, which still never lets a held USDC
 transfer in the batch through.
 
+Signatures are checked too. `signTypedData` with a USDC x402 authorization (EIP-3009, or Circle Gateway's batched
+form on Circle's GatewayWallet contract) gets the payment checks and a validity limit (`maxValiditySeconds`, default
+one hour; `maxGatewayValiditySeconds`, default 8 days). Any permit, EIP-2612 or Permit2, on any token, is **held**
+as `TOKEN_APPROVAL` (plus `UNLIMITED_APPROVAL`), even with `allowUnsupported`: a permit lets someone else spend the
+wallet's tokens later. Other typed data and `signMessage` are blocked unless you pass `allowUnsupported`. The
+typed-data checks match the Python SDK's `check_authorization` case for case (`test/auth_vectors.json`).
+
 EIP-7702 code delegation is always **held**, even with `allowUnsupported`: a transaction carrying an
 `authorizationList`, a type-4 transaction (signed or raw), and `signAuthorization` all throw with flag
 `CODE_DELEGATION`, because a delegation lets contract code move every asset in the account, and one signed
