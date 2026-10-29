@@ -50,13 +50,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install "sra-riskgate==0.8.0"
+      - run: pip install "sra-riskgate==0.15.0"
       - run: python -I scripts/make_vectors.py /tmp/vectors.json
+      - run: python -I scripts/make_auth_vectors.py > /tmp/auth_vectors.json
       - name: Committed vectors match the published SDK
         run: |
           python - <<'PY'
           import json, sys
-          a = json.load(open("/tmp/vectors.json"))
-          b = json.load(open("test/vectors.json"))
-          sys.exit(0 if a == b else "test/vectors.json is out of date; regenerate it with npm run parity")
+          for new, committed in (("/tmp/vectors.json", "test/vectors.json"),
+                                 ("/tmp/auth_vectors.json", "test/auth_vectors.json")):
+              if json.load(open(new)) != json.load(open(committed)):
+                  sys.exit(f"{committed} is out of date; regenerate it with npm run parity")
           PY
