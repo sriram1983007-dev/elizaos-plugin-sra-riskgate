@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.5.0 — 2026-10-29
+- **Already-delegated accounts are stopped.** Before every guarded call the guard reads its own account's code
+  (`eth_getCode`). An EIP-7702 delegation designator (`0xef0100` + address) to a contract not in the new
+  `expectedDelegates` option stops everything with `ACCOUNT_DELEGATED`, which `allowUnsupported` does not bypass:
+  an authorization signed outside the guarded client leaves exactly this trace. Unreadable code stops with
+  `ACCOUNT_CODE_UNREADABLE`; `checkAccountCode: false` skips the read. Suggested by Carlos (Bloqarl) on DEV.to.
+- `checkPayment` takes `accountCode` and `expectedDelegates` too, matching `sra-riskgate` 0.16.0 (parity vectors
+  regenerated, 162 cases). New exports `checkAccountCode()`, `delegateFromCode()`, `DELEGATED_FLAG`.
+- Changed: the guard now makes one `eth_getCode` read per guarded call. Wallet clients whose transport cannot
+  answer it need `checkAccountCode: false`.
+
 ## 0.4.0 — 2026-10-28
 - **Address-poisoning check**, matching `sra-riskgate` 0.15.0: with `knownRecipients` set, a recipient that is not
   known but imitates a known payee (at least 7 matching hex characters, at least 3 at each end) is rejected as

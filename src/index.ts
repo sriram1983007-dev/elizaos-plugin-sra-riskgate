@@ -1,4 +1,4 @@
-export { checkPayment, scanPayloadClaims, normalizeText, parseAddressList, isUsdc, USDC_ADDRESSES, USDC_DECIMALS, CLAIMS_FLAG, LOOKALIKE_FLAG, findLookalike } from "./checks.js";
+export { checkPayment, scanPayloadClaims, normalizeText, parseAddressList, isUsdc, USDC_ADDRESSES, USDC_DECIMALS, CLAIMS_FLAG, LOOKALIKE_FLAG, findLookalike, DELEGATED_FLAG, delegateFromCode, checkAccountCode } from "./checks.js";
 export type { Decision, Verdict, PaymentCheck, Policy, PayloadClaim } from "./checks.js";
 export { guardWalletClient, checkTransaction, decodeTransferCalldata, delegationHold, RiskGateBlockedError } from "./guard.js";
 export type { GuardOptions, DecodedPayment } from "./guard.js";

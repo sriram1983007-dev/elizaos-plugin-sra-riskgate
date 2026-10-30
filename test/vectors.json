@@ -2541,6 +2541,234 @@
    }
   },
   {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 8453,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "amount": 20.0,
+    "peg_deviation_pct": 0.1,
+    "account_code": "0x"
+   },
+   "nan": [],
+   "expected": {
+    "decision": "approve",
+    "flags": [],
+    "risk_score": 0.05
+   }
+  },
+  {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 8453,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "amount": 20.0,
+    "peg_deviation_pct": 0.1,
+    "account_code": ""
+   },
+   "nan": [],
+   "expected": {
+    "decision": "approve",
+    "flags": [],
+    "risk_score": 0.05
+   }
+  },
+  {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 8453,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "amount": 20.0,
+    "peg_deviation_pct": 0.1,
+    "account_code": "0x6080604052"
+   },
+   "nan": [],
+   "expected": {
+    "decision": "approve",
+    "flags": [],
+    "risk_score": 0.05
+   }
+  },
+  {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 8453,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "amount": 20.0,
+    "peg_deviation_pct": 0.1,
+    "account_code": "0xef0100dddddddddddddddddddddddddddddddddddddddd"
+   },
+   "nan": [],
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "ACCOUNT_DELEGATED"
+    ],
+    "risk_score": 0.95
+   }
+  },
+  {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 8453,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "amount": 20.0,
+    "peg_deviation_pct": 0.1,
+    "account_code": "0xEF0100DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"
+   },
+   "nan": [],
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "ACCOUNT_DELEGATED"
+    ],
+    "risk_score": 0.95
+   }
+  },
+  {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 8453,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "amount": 20.0,
+    "peg_deviation_pct": 0.1,
+    "account_code": "0xef0100dddddddddddddddddddddddddddddddddddddddd00"
+   },
+   "nan": [],
+   "expected": {
+    "decision": "approve",
+    "flags": [],
+    "risk_score": 0.05
+   }
+  },
+  {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 8453,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "amount": 20.0,
+    "peg_deviation_pct": 0.1,
+    "account_code": "0xzz"
+   },
+   "nan": [],
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "INVALID_ACCOUNT_CODE"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 8453,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "amount": 20.0,
+    "peg_deviation_pct": 0.1,
+    "account_code": "0x123"
+   },
+   "nan": [],
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "INVALID_ACCOUNT_CODE"
+    ],
+    "risk_score": 0.65
+   }
+  },
+  {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 8453,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "amount": 20.0,
+    "peg_deviation_pct": 0.1,
+    "account_code": "0xef0100dddddddddddddddddddddddddddddddddddddddd",
+    "expected_delegates": [
+     "0xdddddddddddddddddddddddddddddddddddddddd"
+    ]
+   },
+   "nan": [],
+   "expected": {
+    "decision": "approve",
+    "flags": [],
+    "risk_score": 0.05
+   }
+  },
+  {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 8453,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "amount": 20.0,
+    "peg_deviation_pct": 0.1,
+    "account_code": "0xef0100dddddddddddddddddddddddddddddddddddddddd",
+    "expected_delegates": [
+     "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    ]
+   },
+   "nan": [],
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "ACCOUNT_DELEGATED"
+    ],
+    "risk_score": 0.95
+   }
+  },
+  {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 8453,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "amount": 20.0,
+    "peg_deviation_pct": 0.1,
+    "account_code": "0xef0100dddddddddddddddddddddddddddddddddddddddd",
+    "blocked_addresses": [
+     "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    ]
+   },
+   "nan": [],
+   "expected": {
+    "decision": "reject",
+    "flags": [
+     "BLOCKLISTED_ADDRESS",
+     "BLOCKLISTED_RECIPIENT"
+    ],
+    "risk_score": 1.0
+   }
+  },
+  {
+   "days_after_as_of": 1,
+   "input": {
+    "chain_id": 137,
+    "sender": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recipient": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "amount": 20.0,
+    "peg_deviation_pct": 0.1,
+    "account_code": "0xef0100dddddddddddddddddddddddddddddddddddddddd"
+   },
+   "nan": [],
+   "expected": {
+    "decision": "hold",
+    "flags": [
+     "ACCOUNT_DELEGATED"
+    ],
+    "risk_score": 0.95
+   }
+  },
+  {
    "days_after_as_of": 90,
    "input": {
     "chain_id": 8453,

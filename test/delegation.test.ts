@@ -12,7 +12,7 @@ const auth = (chainId: number) => ({ contractAddress: DELEGATE, address: DELEGAT
 
 function wallet() {
   const reached: string[] = [];
-  const transport = custom({ async request({ method }: { method: string }) { reached.push(method); throw new Error(`RPC ${method} must not be reached`); } });
+  const transport = custom({ async request({ method }: { method: string }) { if (method === "eth_getCode") return "0x"; reached.push(method); throw new Error(`RPC ${method} must not be reached`); } });
   const client: any = createWalletClient({ account, chain: base, transport });
   // viem >= 2.22 has signAuthorization as a wallet action; stand one in so the guard is exercised either way.
   client.signAuthorization = async () => { reached.push("signAuthorization"); return auth(0); };

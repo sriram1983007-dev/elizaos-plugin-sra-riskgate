@@ -21,7 +21,7 @@ const abiCall = (to: string, usdc: number) => ({
 
 function wallet() {
   const sent: unknown[] = [];
-  const transport = custom({ async request({ method }: { method: string }) { throw new Error(`RPC ${method} must not be reached`); } });
+  const transport = custom({ async request({ method }: { method: string }) { if (method === "eth_getCode") return "0x"; throw new Error(`RPC ${method} must not be reached`); } });
   const client: any = createWalletClient({ account, chain: base, transport });
   // sendCalls (EIP-5792) is a wallet action in newer viem; stand one in so the guard is exercised either way.
   client.sendCalls = async (args: unknown) => { sent.push(args); return { id: "0x01" }; };

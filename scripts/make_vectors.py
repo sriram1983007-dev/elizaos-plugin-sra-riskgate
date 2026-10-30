@@ -70,6 +70,15 @@ add(**{**base, "recipient": lookalike(4, 4)}, known_recipients=[P], blocked_addr
 add(**{**base, "recipient": lookalike(4, 4), "peg_deviation_pct": 7.0}, known_recipients=[P])
 add(**{**base, "recipient": lookalike(4, 4)})                     # off without known_recipients
 add(**{**base, "recipient": P}, known_recipients=[P])
+# 0.16.0: the paying account's own code (EIP-7702 delegation designator)
+D = "0x" + "d" * 40
+for code in ["0x", "", "0x6080604052", "0xef0100" + "d" * 40, "0xEF0100" + "D" * 40, "0xef0100" + "d" * 40 + "00",
+             "0xzz", "0x123"]:
+    add(**base, account_code=code)
+add(**base, account_code="0xef0100" + "d" * 40, expected_delegates=[D])
+add(**base, account_code="0xef0100" + "d" * 40, expected_delegates=["0x" + "e" * 40])
+add(**base, account_code="0xef0100" + "d" * 40, blocked_addresses=[B])
+add(**{**base, "chain_id": 137}, account_code="0xef0100" + "d" * 40)
 
 days = [1, 90, 91, 400]
 out = []

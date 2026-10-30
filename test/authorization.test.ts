@@ -22,7 +22,7 @@ const now = () => Math.floor(Date.now() / 1000);
 
 function wallet() {
   const reached: string[] = [];
-  const transport = custom({ async request({ method }: { method: string }) { reached.push(method); throw new Error(`RPC ${method}`); } });
+  const transport = custom({ async request({ method }: { method: string }) { if (method === "eth_getCode") return "0x"; reached.push(method); throw new Error(`RPC ${method}`); } });
   return { client: createWalletClient({ account, chain: base, transport }), reached };
 }
 

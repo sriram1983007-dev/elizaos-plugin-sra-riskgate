@@ -17,7 +17,7 @@ describe("address poisoning (0.4.0)", () => {
 
   it("the wallet guard never broadcasts a payment to a look-alike, even with allowUnsupported", async () => {
     const reached: string[] = [];
-    const transport = custom({ async request({ method }: { method: string }) { reached.push(method); throw new Error(method); } });
+    const transport = custom({ async request({ method }: { method: string }) { if (method === "eth_getCode") return "0x"; reached.push(method); throw new Error(method); } });
     const client = createWalletClient({ account, chain: base, transport });
     const err = await guardWalletClient(client, { knownRecipients: [PAYEE], allowUnsupported: true })
       .writeContract({ address: USDC_ADDRESSES[8453] as `0x${string}`, abi: erc20Abi, functionName: "transfer", args: [FAKE, 1_000_000n] })

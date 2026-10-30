@@ -17,7 +17,7 @@
  * EIP-7702 code delegation (an `authorizationList`, a type-4 transaction, or `signAuthorization`) hands
  * control of the account to contract code, so it is always held, even with `allowUnsupported`.
  */
-import { checkPayment, isUsdc, type Policy, type Verdict } from "./checks.js";
+import { checkAccountCode, checkPayment, isUsdc, type Policy, type Verdict } from "./checks.js";
 import { checkAuthorization, isApprovalSignature } from "./authorization.js";
 
 export class RiskGateBlockedError extends Error {
@@ -34,6 +34,11 @@ export interface GuardOptions extends Policy {
   maxValiditySeconds?: number;
   /** The same for Circle Gateway batched payments. Default 8 days. */
   maxGatewayValiditySeconds?: number;
+  /**
+   * Read the account's own code (eth_getCode) before every guarded call, and stop if it is delegated under
+   * EIP-7702 to a contract not in `expectedDelegates` (ACCOUNT_DELEGATED). Default true.
+   */
+  checkAccountCode?: boolean;
   /** Called with every decision, for logging or audit. */
   onDecision?: (event: { method: string; verdict: Verdict; payment?: DecodedPayment; payments?: DecodedPayment[] }) => void;
 }
@@ -209,6 +214,20 @@ function checkTypedData(client: any, args: any, options: GuardOptions): Verdict 
 
 /** Check a transaction without sending it. */
 export function checkTransaction(client: any, method: string, args: any, options: GuardOptions = {}): Verdict {
+  // The paying account first: if someone else already controls it, nothing it signs is safe.
+  if (options.accountCode !== undefined && options.accountCode !== null) {
+    let compromised: Verdict | null;
+    try {
+      compromised = checkAccountCode(options.accountCode, options.expectedDelegates);
+    } catch (e) {
+      compromised = { decision: "reject", riskScore: 1, flags: ["CONFIGURATION_ERROR"], requiredActions: ["fix_configuration"],
+        explanation: `The risk gate is misconfigured: ${(e as Error).message}` };
+    }
+    if (compromised) {
+      options.onDecision?.({ method, verdict: compromised });
+      return compromised;
+    }
+  }
   const delegation = delegationHold(method, args);
   if (delegation) {
     options.onDecision?.({ method, verdict: delegation });
@@ -254,7 +273,20 @@ export function guardWalletClient<T extends object>(client: T, options: GuardOpt
       const value = Reflect.get(target, prop, receiver);
       if (typeof prop !== "string" || !GUARDED.has(prop) || typeof value !== "function") return value;
       return async (args: any, ...rest: unknown[]) => {
-        const verdict = checkTransaction(target, prop, args, options);
+        let opts = options;
+        const address = accountAddress(target, args);
+        if (options.checkAccountCode !== false && address && options.accountCode === undefined) {
+          try {
+            const code = await (target as any).request({ method: "eth_getCode", params: [address, "latest"] });
+            opts = { ...options, accountCode: code ?? "0x" };
+          } catch (e) {
+            const verdict: Verdict = { decision: "hold", riskScore: 0.65, flags: ["ACCOUNT_CODE_UNREADABLE"], requiredActions: ["manual_review"],
+              explanation: `SRA-RiskGate could not read this account's code (${(e as Error).message}) to check it is not delegated, so nothing is signed. Set checkAccountCode: false to skip this check.` };
+            options.onDecision?.({ method: prop, verdict });
+            throw new RiskGateBlockedError(verdict);
+          }
+        }
+        const verdict = checkTransaction(target, prop, args, opts);
         const unsupported = verdict.flags.length === 1 && verdict.flags[0] === "CHECK_FAILED" && verdict.explanation.startsWith("SRA-RiskGate cannot check");
         if (verdict.decision !== "approve" && !(unsupported && options.allowUnsupported)) {
           throw new RiskGateBlockedError(verdict);
