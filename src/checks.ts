@@ -40,6 +40,13 @@ export interface Policy {
   sanctionsMaxAgeDays?: number | null;
   /** Clock for the staleness check; defaults to now. */
   now?: () => Date;
+  /**
+   * The paying account's on-chain code (its eth_getCode result). If it is an EIP-7702 delegation designator
+   * (0xef0100 + address) to a contract not in `expectedDelegates`, the payment is held (ACCOUNT_DELEGATED).
+   */
+  accountCode?: unknown;
+  /** EIP-7702 delegate contracts the account uses on purpose. */
+  expectedDelegates?: string[] | null;
 }
 
 export const USDC_DECIMALS = 6;
@@ -53,6 +60,31 @@ const ADDRESS = /^0x[0-9a-fA-F]{40}$/;
 const NOTES = new Set(["PEG_NOT_CHECKED", "SANCTIONS_NOT_CHECKED", "ROUND_AMOUNT", "SANCTIONS_LIST_STALE"]);
 export const CLAIMS_FLAG = "self_asserted_verification_in_payload";
 export const LOOKALIKE_FLAG = "LOOKALIKE_RECIPIENT";
+export const DELEGATED_FLAG = "ACCOUNT_DELEGATED";
+
+/** The delegate address if `code` is an EIP-7702 delegation designator (0xef0100 + address), else null. */
+export function delegateFromCode(code: unknown): string | null {
+  if (typeof code !== "string") return null;
+  const h = code.trim().toLowerCase().replace(/^0x/, "");
+  return /^ef0100[0-9a-f]{40}$/.test(h) ? "0x" + h.slice(6) : null;
+}
+
+/**
+ * A hold if the account's code shows an EIP-7702 delegation to a contract not in `expectedDelegates`, or cannot
+ * be read; null for a plain account, an ordinary contract wallet, or an expected delegate.
+ */
+export function checkAccountCode(code: unknown, expectedDelegates?: string[] | null): Verdict | null {
+  if (typeof code !== "string" || !/^(0x)?([0-9a-fA-F]{2})*$/.test(code.trim())) {
+    return verdict("hold", ["INVALID_ACCOUNT_CODE"], `The account code passed in is not hex (${JSON.stringify(String(code).slice(0, 40))}), so it cannot be checked; the payment is held.`, ["manual_review"]);
+  }
+  const delegate = delegateFromCode(code);
+  if (!delegate) return null;
+  const expected = parseAddressList("expectedDelegates", expectedDelegates) ?? new Set<string>();
+  if (expected.has(delegate)) return null;
+  return verdict("hold", [DELEGATED_FLAG],
+    `The paying account is delegated under EIP-7702 to ${delegate} (its code is 0xef0100 followed by that address), which is not one of your expected_delegates. That contract can move everything the account holds, so the account may no longer be yours alone. Stop all payments and signatures from it until a person has checked.`,
+    ["manual_review", "stop_signing"], 0.95);
+}
 
 function sharedLength(a: string, b: string): number {
   let n = 0;
@@ -196,6 +228,17 @@ function checkPaymentInner(p: PaymentCheck, policy: Policy): Verdict {
     const who = hits.map(([party, a]) => `${party} ${a}`).join(" and ");
     return verdict("reject", ["BLOCKLISTED_ADDRESS", ...hits.map(([party]) => `BLOCKLISTED_${party.toUpperCase()}`)],
       `The ${who} is on your blocked_addresses list. Do not pay.`, ["reject_payment"], 1.0);
+  }
+
+  // 1c. The paying account itself: an unexpected EIP-7702 delegation means someone else may control it.
+  if (policy.accountCode !== undefined && policy.accountCode !== null) {
+    let compromised: Verdict | null;
+    try {
+      compromised = checkAccountCode(policy.accountCode, policy.expectedDelegates);
+    } catch (e) {
+      return config((e as Error).message);
+    }
+    if (compromised) return compromised;
   }
 
   // 2. Supported asset and chain.

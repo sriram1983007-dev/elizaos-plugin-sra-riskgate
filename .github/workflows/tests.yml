@@ -50,7 +50,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install "sra-riskgate==0.15.0"
+      - run: pip install "sra-riskgate==0.16.0"
       - run: python -I scripts/make_vectors.py /tmp/vectors.json
       - run: python -I scripts/make_auth_vectors.py > /tmp/auth_vectors.json
       - name: Committed vectors match the published SDK

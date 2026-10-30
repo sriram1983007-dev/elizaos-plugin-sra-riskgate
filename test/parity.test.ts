@@ -15,6 +15,7 @@ function toTs(input: Record<string, any>, nan: string[]) {
     policy: {
       maxAmount: input.max_amount, depegHoldPct: input.depeg_hold_pct, depegRejectPct: input.depeg_reject_pct,
       checkSanctions: input.check_sanctions, knownRecipients: input.known_recipients, blockedAddresses: input.blocked_addresses,
+      accountCode: input.account_code, expectedDelegates: input.expected_delegates,
     },
   };
 }

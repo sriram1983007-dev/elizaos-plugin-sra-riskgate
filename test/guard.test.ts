@@ -17,6 +17,7 @@ function wallet() {
   const transport = custom({
     async request({ method }: { method: string; params?: unknown }) {
       switch (method) {
+        case "eth_getCode": return "0x";
         case "eth_chainId": return "0x2105";
         case "eth_getTransactionCount": return "0x0";
         case "eth_estimateGas": return "0x15f90";

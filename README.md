@@ -54,6 +54,12 @@ With `knownRecipients` set, a payment to an address that imitates one of your pa
 first and last characters, such as `0x2ffb…b7ee` for `0x2ffb88…472deb7ee`) is **rejected** as
 `LOOKALIKE_RECIPIENT`, naming the payee it imitates. Same rule as the Python SDK 0.15.0, checked case for case.
 
+Before every guarded call, the guard also reads its own account's code (`eth_getCode`). If the account is
+already delegated under EIP-7702 (code `0xef0100` followed by a delegate address) to a contract not in
+`expectedDelegates`, it stops (`ACCOUNT_DELEGATED`) and signs nothing, even with `allowUnsupported`: an
+authorization signed anywhere else leaves exactly this trace. If the code cannot be read, it also stops
+(`ACCOUNT_CODE_UNREADABLE`); pass `checkAccountCode: false` to skip the read. Suggested by Carlos (Bloqarl) on DEV.to.
+
 EIP-7702 code delegation is always **held**, even with `allowUnsupported`: a transaction carrying an
 `authorizationList`, a type-4 transaction (signed or raw), and `signAuthorization` all throw with flag
 `CODE_DELEGATION`, because a delegation lets contract code move every asset in the account, and one signed
